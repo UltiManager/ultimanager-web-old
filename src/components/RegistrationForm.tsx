@@ -1,6 +1,13 @@
-import { Button, Paper, TextField, Theme, Typography, WithStyles, withStyles } from '@material-ui/core';
+import {
+  Button,
+  Paper,
+  TextField,
+  Theme,
+  Typography,
+  WithStyles,
+  withStyles,
+} from '@material-ui/core';
 import * as React from 'react';
-
 
 const styles = (theme: Theme) => ({
   formBody: {
@@ -13,11 +20,13 @@ const styles = (theme: Theme) => ({
   },
 });
 
-
 interface IRegistrationFormProps {
-  readonly onSubmit: (email: string, username: string, password: string) => void;
+  readonly onSubmit: (
+    email: string,
+    username: string,
+    password: string,
+  ) => void;
 }
-
 
 interface IRegistrationFormState {
   inputs: {
@@ -25,9 +34,8 @@ interface IRegistrationFormState {
   };
 }
 
-
-type Props = IRegistrationFormProps & WithStyles<keyof ReturnType<typeof styles>>;
-
+type Props = IRegistrationFormProps &
+  WithStyles<keyof ReturnType<typeof styles>>;
 
 class RegistrationForm extends React.Component<Props, IRegistrationFormState> {
   public state = {
@@ -43,7 +51,9 @@ class RegistrationForm extends React.Component<Props, IRegistrationFormState> {
 
     return (
       <Paper className={classes.root}>
-        <Typography align="center" gutterBottom={true} variant="display1">Register</Typography>
+        <Typography align="center" gutterBottom={true} variant="display1">
+          Register
+        </Typography>
         <form onSubmit={this.handleFormSubmit}>
           <div className={classes.formBody}>
             <TextField
@@ -77,7 +87,15 @@ class RegistrationForm extends React.Component<Props, IRegistrationFormState> {
               type="password"
             />
           </div>
-          <Button color="primary" fullWidth={true} size="large" type="submit" variant="raised">Register</Button>
+          <Button
+            color="primary"
+            fullWidth={true}
+            size="large"
+            type="submit"
+            variant="raised"
+          >
+            Register
+          </Button>
         </form>
       </Paper>
     );
@@ -87,7 +105,9 @@ class RegistrationForm extends React.Component<Props, IRegistrationFormState> {
     e.preventDefault();
 
     const { onSubmit } = this.props;
-    const { inputs: { email, password, username } } = this.state;
+    const {
+      inputs: { email, password, username },
+    } = this.state;
 
     onSubmit(email, username, password);
   };
@@ -102,8 +122,7 @@ class RegistrationForm extends React.Component<Props, IRegistrationFormState> {
         [name]: value,
       },
     }));
-  }
+  };
 }
-
 
 export default withStyles(styles)(RegistrationForm);

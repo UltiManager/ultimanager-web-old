@@ -2,7 +2,6 @@
 
 Web app for managing an ultimate Frisbee team.
 
-
 ## Getting Started
 
 To start developing, install the dependencies and start the development server.
@@ -17,7 +16,6 @@ To run the tests, use:
 ```shell
 yarn test
 ```
-
 
 ## License
 

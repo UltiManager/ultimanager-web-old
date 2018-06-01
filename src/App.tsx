@@ -2,8 +2,7 @@ import { CssBaseline, Grid } from '@material-ui/core';
 import * as React from 'react';
 import 'typeface-roboto';
 
-import RegistrationForm from "./components/RegistrationForm";
-
+import RegistrationForm from './components/RegistrationForm';
 
 class App extends React.Component {
   public render() {
@@ -19,7 +18,11 @@ class App extends React.Component {
     );
   }
 
-  private handleRegister = (email: string, username: string, password: string) => {
+  private handleRegister = (
+    email: string,
+    username: string,
+    password: string,
+  ) => {
     // tslint:disable-next-line:no-console
     console.log('Registering', username, 'with email', email);
   };

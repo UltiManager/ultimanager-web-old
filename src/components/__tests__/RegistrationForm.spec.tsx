@@ -3,7 +3,6 @@ import * as React from 'react';
 
 import RegistrationForm from '../RegistrationForm';
 
-
 const setup = () => {
   const props = {
     onSubmit: jest.fn(),
@@ -16,10 +15,9 @@ const setup = () => {
   };
 };
 
-
 describe('RegistrationForm', () => {
   describe('Controlled Inputs', () => {
-    ['email', 'password', 'username'].forEach((inputName) => {
+    ['email', 'password', 'username'].forEach(inputName => {
       it(`should have a controlled ${inputName} component`, () => {
         const { wrapper } = setup();
 
@@ -34,13 +32,18 @@ describe('RegistrationForm', () => {
         };
         inputField.simulate('change', mockEvent);
 
-        expect(wrapper.state('inputs')[inputName]).toBe(mockEvent.currentTarget.value);
+        expect(wrapper.state('inputs')[inputName]).toBe(
+          mockEvent.currentTarget.value,
+        );
       });
     });
   });
 
   it('should block the default form submit event and call the submit prop', () => {
-    const { props: { onSubmit }, wrapper } = setup();
+    const {
+      props: { onSubmit },
+      wrapper,
+    } = setup();
 
     // Set values for form to submit
     const email = 'test@example.com';
