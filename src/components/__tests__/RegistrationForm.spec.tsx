@@ -1,7 +1,8 @@
-import { shallow } from 'enzyme';
+import { createShallow } from '@material-ui/core/test-utils';
 import * as React from 'react';
-
 import RegistrationForm from '../RegistrationForm';
+
+const shallow = createShallow({ dive: true });
 
 const setup = () => {
   const props = {
