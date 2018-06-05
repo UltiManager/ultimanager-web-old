@@ -1,4 +1,4 @@
-# UltiManager Web [![Travis](https://img.shields.io/travis/UltiManager/ultimanager-web.svg)](https://travis-ci.com/UltiManager/ultimanager-web)
+# UltiManager Web [![Travis](https://img.shields.io/travis/UltiManager/ultimanager-web.svg)](https://travis-ci.com/UltiManager/ultimanager-web) [![Codecov](https://img.shields.io/codecov/c/github/UltiManager/ultimanager-web.svg)](https://codecov.io/gh/UltiManager/ultimanager-web)
 
 Web app for managing an ultimate Frisbee team.
 
