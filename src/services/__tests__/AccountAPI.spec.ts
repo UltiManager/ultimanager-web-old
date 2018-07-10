@@ -1,14 +1,13 @@
 import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
+import * as httpAdapter from 'axios/lib/adapters/http';
+import * as nock from 'nock';
 import { API_ROOT } from '../../settings';
 import { ClientError } from '../APIExceptions';
 import { AccountAPI } from '../index';
 
-const axiosMock = new MockAdapter(axios);
+axios.defaults.adapter = httpAdapter;
 
 describe('AccountAPI', () => {
-  afterEach(() => axiosMock.reset());
-
   describe('register', () => {
     it('should return the response from a successful login attempt', async () => {
       const email = 'test@example.com';
@@ -17,7 +16,9 @@ describe('AccountAPI', () => {
 
       const response = { email, username };
 
-      axiosMock.onPost(`${API_ROOT}/account/register/`).reply(201, response);
+      nock(API_ROOT)
+        .post('/account/register/')
+        .reply(201, response);
 
       await expect(
         AccountAPI.register(email, username, password),
@@ -30,7 +31,9 @@ describe('AccountAPI', () => {
         password: ['That password is too short.'],
       };
 
-      axiosMock.onPost(`${API_ROOT}/account/register/`).reply(400, response);
+      nock(API_ROOT)
+        .post('/account/register/')
+        .reply(400, response);
 
       return expect(AccountAPI.register('', '', '')).rejects.toEqual(
         new ClientError(response),
