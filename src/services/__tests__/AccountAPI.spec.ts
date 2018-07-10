@@ -1,8 +1,9 @@
 import axios from 'axios';
 import * as httpAdapter from 'axios/lib/adapters/http';
 import * as nock from 'nock';
+import { ClientError } from '../../exceptions';
+import ServerError from '../../exceptions/ServerError';
 import { API_ROOT } from '../../settings';
-import { ClientError } from '../APIExceptions';
 import { AccountAPI } from '../index';
 
 axios.defaults.adapter = httpAdapter;
@@ -37,6 +38,16 @@ describe('AccountAPI', () => {
 
       return expect(AccountAPI.register('', '', '')).rejects.toEqual(
         new ClientError(response),
+      );
+    });
+
+    it('should raise a server error if a 500 status is received', async () => {
+      nock(API_ROOT)
+        .post('/account/register/')
+        .reply(500);
+
+      await expect(AccountAPI.register('', '', '')).rejects.toEqual(
+        new ServerError(),
       );
     });
   });

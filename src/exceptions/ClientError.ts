@@ -1,6 +1,6 @@
 export type ClientErrorResponse = Record<string, ReadonlyArray<string>>;
 
-export class ClientError extends Error {
+export default class ClientError extends Error {
   public readonly errors: ClientErrorResponse;
 
   constructor(errors: ClientErrorResponse) {
