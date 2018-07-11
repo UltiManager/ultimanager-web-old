@@ -1,7 +1,6 @@
 import axios from 'axios';
-import ServerError from '../exceptions/ServerError';
+import { ClientError, ServerError } from '../exceptions';
 import { API_ROOT } from '../settings';
-import { ClientError } from '../exceptions';
 
 export interface IAccountRegisterResponse {
   email: string;
@@ -15,6 +14,7 @@ export default class AccountAPI {
   public static BASE_ENDPOINT = `${API_ROOT}/account`;
 
   /**
+   * Register a new user.
    *
    * @param {string} email The user's email address.
    * @param {string} username The user's username.
