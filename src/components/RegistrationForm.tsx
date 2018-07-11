@@ -8,6 +8,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import * as React from 'react';
+import { ClientErrorResponse } from '../exceptions/ClientError';
 
 const styles = (theme: Theme) => ({
   formBody: {
@@ -21,11 +22,8 @@ const styles = (theme: Theme) => ({
 });
 
 interface IRegistrationFormProps {
-  readonly onSubmit: (
-    email: string,
-    username: string,
-    password: string,
-  ) => void;
+  errors?: ClientErrorResponse;
+  onSubmit: (email: string, username: string, password: string) => void;
 }
 
 interface IRegistrationFormState {

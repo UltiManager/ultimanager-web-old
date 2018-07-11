@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Prettier Files" pattern="(file:*.json||file:*.md||file:*.yaml||file:*.yml||file:src//*.ts||file:src//*.tsx)&amp;&amp;!file[ultimanager-web]:coverage//*" />
+</component>
